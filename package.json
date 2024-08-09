@@ -1,0 +1,76 @@
+{
+  "name": "nestjs-dev-tools",
+  "displayName": "Nestjs Dev Tools",
+  "description": "Nestjs Dev Tools",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": false,
+  "icon": "img/nestjs.png",
+  "main": "./out/src/extension",
+  "browser": "./out/src/extension",
+  "keywords": [
+    "typescript",
+    "package",
+    "library"
+  ],
+  "author": {
+    "name": "Maratib Ali Khan",
+    "email": "maratib@gmail.com",
+    "url": "https://maratib.github.io/"
+  },
+  "homepage": "https://github.com/maratib/typescript-starter",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maratib/typescript-starter.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./snippets/nest.json"
+      }
+    ],
+    "commands": [],
+    "configuration": {
+      "title": "VSCode Extension Starter configuration",
+      "properties": {
+        "vscode-extension-starter.hover": {
+          "type": "string",
+          "default": "hover on hay",
+          "description": "Whether to enable/disable hover."
+        },
+        "vscode-extension-starter.showCommon": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to enable/disable decoration"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}

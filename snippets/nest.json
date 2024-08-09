@@ -1,0 +1,20 @@
+{
+  "Nest: Module": {
+    "prefix": ["ns-module", "nest-module"],
+    "description": "Nest Module",
+    "body": [
+      "import { Module } from '@nestjs/common';",
+      "",
+      "/**",
+      "* Module docs",
+      "*/",
+      "@Module({",
+      "\timports: [],",
+      "\tcontrollers: [],",
+      "\tproviders: [],",
+      "\texports: [],",
+      "})",
+      "export class ${1:Name}Module {}"
+    ]
+  }
+}
