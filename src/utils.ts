@@ -1,38 +1,50 @@
-import * as vs from "vscode";
-import * as fs from "fs";
-import path from "path";
+import { dirname, relative } from "path";
+import { Uri, Position } from "vscode";
 
-export const EXT_NAME = "vscode-extension-starter";
+export function getPascalCase(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
-const channel = vs.window.createOutputChannel(EXT_NAME);
+export function getCamelCase(str: string): string {
+  return str.charAt(0).toLowerCase() + str.slice(1);
+}
 
-export function watchForExtensionChanges() {
-  const uiFolderPath = path.resolve(__dirname, "../out"); // Replace with the actual path to your
-  fs.watch(
-    uiFolderPath,
-    { recursive: true },
-    (eventType: string, filename: any) => {
-      // console.log(`File ${filename} changed`, eventType);
-      if (eventType === "change") {
-        vs.commands.executeCommand("workbench.action.reloadWindow");
-      }
-    }
+export function getRelativePathForImport(appModule: Uri, importFile: Uri) {
+  return (
+    "./" +
+    relative(dirname(appModule.path), importFile.path)
+      .replace(/\\/g, "/")
+      .replace(".ts", "")
   );
 }
 
-export const getRootPath = () => {
-  return vs.workspace.workspaceFolders &&
-    vs.workspace.workspaceFolders.length > 0
-    ? vs.workspace.workspaceFolders[0].uri.fsPath
-    : undefined;
-};
+export function getArraySchematics(arrayType: string): RegExp {
+  return new RegExp(`${arrayType}(\\s+)?:(\\s+)?\\[`);
+}
 
-export const getConfig = (key: string) => {
-  return vs.workspace.getConfiguration(EXT_NAME)?.get(key);
-};
+export function getBootstrapFunction(): RegExp {
+  return new RegExp("app.listen");
+}
 
-export const log = (msg: any) => {
-  channel.show(true);
+export function getLineNoFromString(
+  str: string,
+  match: RegExpExecArray
+): Position {
+  const array = str.substring(0, match.index).split("\n");
+  const charPosition = str.split("\n")[array.length - 1].indexOf("[");
+  return new Position(array.length - 1, charPosition + 1);
+}
 
-  channel.appendLine(JSON.stringify(msg));
-};
+export const invalidFileNames =
+  /^(\d|\-)|[\\\s+={}\(\)\[\]"`/;,:.*?'<>|#$%^@!~&]|\-$/;
+
+export function getClassName(fileName: string): string {
+  const specialCharIndex = fileName.indexOf("-");
+  if (specialCharIndex !== -1) {
+    return getPascalCase(fileName.substring(0, specialCharIndex)).concat(
+      getPascalCase(fileName.substring(specialCharIndex + 1, fileName.length))
+    );
+  } else {
+    return getPascalCase(fileName);
+  }
+}

@@ -1,13 +1,27 @@
-# VSCode extension starter
+# Nest.js Snippets
 
-```bash
-yarn
-# Open split terminal and run
-yarn watch
+| Syntax          | Description    |
+| --------------- | -------------- |
+| `ns-module`     | New module     |
+| `ns-controller` | New controller |
 
-# updated run.sh extensionDevelopmentPath accordingly
-chmod 755 run.sh
-# to load your extension with vs code run
-run.sh
+| Folder Menu Options                |
+| ---------------------------------- |
+| NestJS - Generate Controller       |
+| NestJS - Generate Module           |
+| NestJS - Generate Service          |
+| NestJS - Generate Exception        |
+| NestJS - Generate Middleware       |
+| NestJS - Generate Pipe             |
+| NestJS - Generate Interceptor      |
+| NestJS - Generate Decorator        |
+| NestJS - Generate Guard            |
+| NestJS - Generate Exception Filter |
+| NestJS - Generate Transport        |
+| NestJS - Generate Adapter          |
+| NestJS - Generate Webpack          |
+| NestJS - Generate Gateway          |
 
-```
+HOW TO USE:
+Right click on a folder in your current project.
+You can find `NestJS dev tools`, under that option you will find all the above options.

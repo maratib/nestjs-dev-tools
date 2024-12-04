@@ -1,33 +1,41 @@
 {
   "name": "nestjs-dev-tools",
-  "displayName": "Nestjs Dev Tools",
-  "description": "Nestjs Dev Tools",
-  "version": "0.0.1",
+  "displayName": "NestJS Dev Tools",
+  "description": "NestJS Dev Tools",
+  "version": "0.0.3",
   "license": "MIT",
   "private": false,
   "icon": "img/nestjs.png",
-  "main": "./out/src/extension",
-  "browser": "./out/src/extension",
+  "main": "./out/extension",
+  "browser": "./out/extension",
   "keywords": [
+    "nest.js",
+    "nest module",
+    "nest controller",
+    "nest service",
+    "nest pipe",
+    "nest guard",
     "typescript",
     "package",
     "library"
   ],
+  "publisher": "maratib",
   "author": {
     "name": "Maratib Ali Khan",
     "email": "maratib@gmail.com",
     "url": "https://maratib.github.io/"
   },
-  "homepage": "https://github.com/maratib/typescript-starter",
+  "homepage": "https://github.com/maratib/nestjs-dev-tools",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maratib/typescript-starter.git"
+    "url": "git+https://github.com/maratib/nestjs-dev-tools.git"
   },
   "engines": {
     "vscode": "^1.85.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Snippets"
   ],
   "activationEvents": [],
   "contributes": {
@@ -37,40 +45,187 @@
         "path": "./snippets/nest.json"
       }
     ],
-    "commands": [],
-    "configuration": {
-      "title": "VSCode Extension Starter configuration",
-      "properties": {
-        "vscode-extension-starter.hover": {
-          "type": "string",
-          "default": "hover on hay",
-          "description": "Whether to enable/disable hover."
-        },
-        "vscode-extension-starter.showCommon": {
-          "type": "boolean",
-          "default": true,
-          "description": "Whether to enable/disable decoration"
-        }
+    "commands": [
+      {
+        "command": "extension.GenerateModule",
+        "title": "NestJS - Generate Module"
+      },
+      {
+        "command": "extension.GenerateService",
+        "title": "NestJS - Generate Service"
+      },
+      {
+        "command": "extension.GenerateController",
+        "title": "NestJS - Generate Controller"
+      },
+      {
+        "command": "extension.GenerateException",
+        "title": "NestJS - Generate Exception"
+      },
+      {
+        "command": "extension.GenerateMiddleware",
+        "title": "NestJS - Generate Middleware"
+      },
+      {
+        "command": "extension.GenerateInterceptor",
+        "title": "NestJS - Generate Interceptor"
+      },
+      {
+        "command": "extension.GeneratePipe",
+        "title": "NestJS - Generate Pipe"
+      },
+      {
+        "command": "extension.GenerateGuard",
+        "title": "NestJS - Generate Guard"
+      },
+      {
+        "command": "extension.GenerateDecorator",
+        "title": "NestJS - Generate Decorator"
+      },
+      {
+        "command": "extension.GenerateExceptionFilter",
+        "title": "NestJS - Generate Exception Filter"
+      },
+      {
+        "command": "extension.GenerateUnitTest",
+        "title": "NestJS - Generate Unit Test"
+      },
+      {
+        "command": "extension.GenerateGateway",
+        "title": "NestJS - Generate Socket Gateway"
+      },
+      {
+        "command": "extension.GenerateRedisAdapter",
+        "title": "NestJS - Generate Redis Adapter"
+      },
+      {
+        "command": "extension.GenerateTransport",
+        "title": "NestJS - Generate Custom Transport"
+      },
+      {
+        "command": "extension.GenerateWebpack",
+        "title": "NestJS - Generate Webpack"
       }
+    ],
+    "submenus": [
+      {
+        "id": "nestjs.dev.tools.submenu",
+        "label": "NestJS dev tools"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "submenu": "nestjs.dev.tools.submenu",
+          "group": "nestjs.dev.tools"
+        }
+      ],
+      "nestjs.dev.tools.submenu": [
+        {
+          "command": "extension.GenerateModule",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateService",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateController",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateException",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateMiddleware",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateInterceptor",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GeneratePipe",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateGuard",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateDecorator",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateExceptionFilter",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateUnitTest",
+          "when": "!explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateGateway",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateRedisAdapter",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateTransport",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        },
+        {
+          "command": "extension.GenerateWebpack",
+          "when": "explorerResourceIsFolder",
+          "group": "nestjs.dev.tools"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "NestJS Dev Tool configuration",
+      "properties": {}
     }
   },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
+    "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
+    "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
     "@types/mocha": "^10.0.6",
+    "@types/mustache": "^4.2.5",
     "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3",
     "@vscode/test-cli": "^0.0.4",
-    "@vscode/test-electron": "^2.3.9"
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "fs-extra": "^11.2.0",
+    "mustache": "^4.2.0"
   }
 }

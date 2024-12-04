@@ -3,11 +3,15 @@
     "prefix": ["ns-module", "nest-module"],
     "description": "Nest Module",
     "body": [
+      "/*",
+      "https://docs.nestjs.com/modules",
+      "*/",
+      "",
       "import { Module } from '@nestjs/common';",
       "",
       "/**",
-      "* Module docs",
-      "*/",
+      "\t* Module docs",
+      "\t*/",
       "@Module({",
       "\timports: [],",
       "\tcontrollers: [],",
@@ -15,6 +19,28 @@
       "\texports: [],",
       "})",
       "export class ${1:Name}Module {}"
+    ]
+  },
+  "Nest: Controller": {
+    "prefix": ["ns-controller", "nest-controller"],
+    "description": "Nest Controller",
+    "body": [
+      "/*",
+      "https://docs.nestjs.com/controllers",
+      "*/",
+      "",
+      "import { Controller, Get } from '@nestjs/common';",
+      "",
+      "/**",
+      "\t* Controller docs",
+      "\t*/",
+      "@Controller()",
+      "export class ${1:Name}Controller {",
+      "\t@Get()",
+      "\thome() {",
+      "\t\t return \"Hello from Controller\"",
+      "\t}",
+      "}"
     ]
   }
 }
